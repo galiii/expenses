@@ -1,20 +1,44 @@
 import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import ListSubheader from '@mui/material/ListSubheader';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import FormControl from "@mui/material/FormControl";
+import { Payment } from '../../models/expenses';
+import styles from './styles';
+
+
+Object.keys(Payment).forEach((p, i) => console.log(`${p}  ${i}`))
+console.log("pay", Object.values(Payment));
 
 export const SelectMenu = () => {
-    return (
-        <div>
-            <InputLabel id="label">Age</InputLabel>
-            <Select labelId="label" id="select" value="20">
-                <MenuItem value="10">Ten</MenuItem>
-                <MenuItem value="20">Twenty</MenuItem>
-            </Select>
+    //states
+    const [pay, setPay] = React.useState<Payment>();
 
-        </div>
+    const handleChange = (event: SelectChangeEvent) => {
+        setPay(event.target.value as Payment);
+    };
+
+    //render
+    return (
+        <styles.SelectMenuContainerStyled sx={{ minWidth: 120 }} right={12}>
+            <FormControl fullWidth >
+                <styles.InputLabelStyled id="demo-simple-select-label">Payment</styles.InputLabelStyled>
+                <Select
+                    labelId="demo-simple-select-label"
+                    label="Payment"
+                    value={pay}
+
+                    onChange={handleChange}
+                >
+                    {Object.values(Payment).map((payment, index) =>
+                        <MenuItem
+                            key={index}
+                            value={payment}
+                        >{payment}
+                        </MenuItem>
+                    )}
+                </Select>
+            </FormControl>
+        </styles.SelectMenuContainerStyled>
     )
 }

@@ -5,6 +5,7 @@ import { Expense, Payment } from "../../models/expenses";
 import Paper from '@mui/material/Paper';
 import { SelectMenu } from "../select-menu/SelectMenu";
 import { SelectDatePicker } from "../select-date-picker/SelectDatePicker"
+import styles from "./styles";
 
 
 type CustomTextFieldProps = {
@@ -24,8 +25,9 @@ export const Form = () => {
     //helper
     //render
     return (
-        <Paper elevation={0} >
-            <form>
+        <Paper elevation={9} >
+            <styles.TitleFormStyled>New Expense</styles.TitleFormStyled>
+            <styles.ContainerFormStyled>
                 <TextField
                     id="detail-input"
                     name="detail"
@@ -40,8 +42,10 @@ export const Form = () => {
                 />
                 <SelectMenu />
                 <SelectDatePicker />
-                <Button>Submit</Button>
-            </form>
+                <div>
+                    <Button>Submit</Button>
+                </div>
+            </styles.ContainerFormStyled>
         </Paper>
     )
 }
