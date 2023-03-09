@@ -23,12 +23,12 @@ export const SelectMenu = () => {
         <styles.SelectMenuContainerStyled sx={{ minWidth: 120 }} right={12}>
             <FormControl fullWidth >
                 <styles.InputLabelStyled id="demo-simple-select-label">Payment</styles.InputLabelStyled>
-                <Select
+                <styles.SelectStyled
                     labelId="demo-simple-select-label"
                     label="Payment"
                     value={pay}
 
-                    onChange={handleChange}
+                // onChange={handleChange}
                 >
                     {Object.values(Payment).map((payment, index) =>
                         <MenuItem
@@ -37,7 +37,7 @@ export const SelectMenu = () => {
                         >{payment}
                         </MenuItem>
                     )}
-                </Select>
+                </styles.SelectStyled>
             </FormControl>
         </styles.SelectMenuContainerStyled>
     )

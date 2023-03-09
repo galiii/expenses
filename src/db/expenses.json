@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "date": "1.1",
+      "amount": 30,
+      "payments": "Credit Card",
+      "detail": "Frozen yoghurt"
+    },
+    {
+      "id": "2",
+      "date": "2.1",
+      "amount": 9,
+      "payments": "Cash",
+      "detail": "Ice cream sandwich"
+    },
+    {
+      "id": "3",
+      "date": "1.1",
+      "amount": 262,
+      "payments": "Credit Card",
+      "detail": "Eclair"
+    },
+    {
+      "id": "4",
+      "date": "3.1",
+      "amount": 3.7,
+      "payments": "ACH",
+      "detail": "Cupcake"
+    },
+    {
+      "id": "5",
+      "date": "4.1",
+      "amount": 356,
+      "payments": "Cash",
+      "detail": "Gingerbread"
+    },
+    {
+      "id": "6",
+      "date": "6.1",
+      "amount": 40,
+      "payments": "Credit Card",
+      "detail": "Frozen yoghurt"
+    }
+  ]
+}

@@ -10,22 +10,24 @@ import { useState } from "react";
 
 import { contacts } from "../../db/mock-data";
 import { columns } from "../../utils/constants";
+import Paper from "@mui/material/Paper";
 
 export const Expenses = () => {
     //States
     const [expenses, setExpenses] = useState(contacts);
     //Helper
 
+    console.log("col", Object.entries(expenses[0]));
     //Renders
     const renderHeaderTable = () => {
         return (
-            <TableHead>
+            <styles.StyledTableHead>
                 <TableRow>
                     {columns.map((column) => (
                         <TableCell key={column.id}>{column.label}</TableCell>
                     ))}
                 </TableRow>
-            </TableHead>
+            </styles.StyledTableHead>
         );
     };
 
@@ -34,13 +36,13 @@ export const Expenses = () => {
             <TableBody>
                 {expenses.map((row, i) => {
                     return (
-                        <TableRow hover role="checkbox" tabIndex={-1} key={i}>
-                            {Object.values(row).map((r, index) => (
-                                <styles.TableStyledCell key={index}>
+                        <styles.StyledTableRow role="checkbox" tabIndex={-1} key={i}>
+                            {Object.values(row).filter((it, index) => index !== 0).map((r, index) => (
+                                <styles.TableStyledCell key={r.id}>
                                     {`${r} `}
                                 </styles.TableStyledCell>
                             ))}
-                        </TableRow>
+                        </styles.StyledTableRow>
                     );
                 })}
             </TableBody>
@@ -50,12 +52,12 @@ export const Expenses = () => {
     return (
         <div>
             <h5>LIST</h5>
-            <TableContainer sx={{ maxHeight: 440 }}>
+            <styles.ContainerTableStyled sx={{ maxHeight: 440 }} >
                 <styles.TableStyled stickyHeader aria-label="sticky table">
                     {renderHeaderTable()}
                     {renderBodyTable()}
                 </styles.TableStyled>
-            </TableContainer>
+            </styles.ContainerTableStyled>
         </div>
     );
 };

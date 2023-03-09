@@ -1,18 +1,22 @@
 import { Expense, Payment } from "../models/expenses";
+import data from './expenses.json';
 
-function createData(
-    date: string,
-    amount: number,
-    payments: Payment, //category: number,
-    detail?: string
-): Expense {
-    return { detail, date, amount, payments /*carbs*/ };
+function createData(): Expense[] {
+    const jsonString = JSON.stringify(data);
+    const expense = JSON.parse(jsonString).data.map((item: Expense) => {
+        return {
+            id: item.id,
+            detail: item.detail,
+            date: item.date,
+            amount: item.amount,
+            payments: item.payments as Payment, //category: number,
+
+        }
+    }
+    ) as Expense[];
+    console.log(expense);
+
+    return expense;
 }
 
-export const contacts = [
-    createData("1.1", 30, Payment.CREDIT_CARD, "Frozen yoghurt"),
-    createData("2.1", 9.0676757, Payment.CASH, "Ice cream sandwich"),
-    createData("1.1", 262, Payment.CREDIT_CARD, "Eclair"),
-    createData("3.1", 3.7, Payment.ACH, "Cupcake"),
-    createData("4.1", 356, Payment.CASH, "Gingerbread"),
-];
+export const contacts = createData();

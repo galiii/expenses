@@ -17,6 +17,7 @@ type CustomTextFieldProps = {
 export const Form = () => {
     //states
     const [formValues, setFormValues] = useState<Expense>({
+        id: "",
         detail: "",
         date: "",
         amount: 0,
@@ -28,14 +29,13 @@ export const Form = () => {
         <Paper elevation={9} >
             <styles.TitleFormStyled>New Expense</styles.TitleFormStyled>
             <styles.ContainerFormStyled>
-                <TextField
+                <styles.TextFieldStyled
                     id="detail-input"
                     name="detail"
                     label="Detail"
                     type="text"
                     value={formValues.detail}
                     //onChange={handleInputChange}
-
                     variant={"outlined"} //enables special material-ui styling
                     size={"small"}
                     margin={"dense"}
@@ -43,7 +43,9 @@ export const Form = () => {
                 <SelectMenu />
                 <SelectDatePicker />
                 <div>
-                    <Button>Submit</Button>
+                    <Button
+                        variant="contained"
+                    >Submit</Button>
                 </div>
             </styles.ContainerFormStyled>
         </Paper>

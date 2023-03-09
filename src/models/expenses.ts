@@ -13,7 +13,7 @@ export enum Category {
 }
 
 export interface Expense {
-    id?: string;
+    id: string;
     detail?: string;
     date: string;
     amount: number;
